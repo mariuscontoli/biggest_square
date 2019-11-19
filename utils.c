@@ -1,6 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
+#include "my_bsq.h"
 
 void my_putchar(char c)
 {
