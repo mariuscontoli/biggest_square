@@ -5,47 +5,44 @@
 ** fs_open_file
 */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <fcntl.h>
+#include "my_bsq.h"
 
-int skip_first_line(char const *buffer)
+int skip_first_line(map_t *map)
 {
     int i = 0;
     int k = 0;
     int count = 0;
-    for (; buffer[i]; i++)
+    for (; map->buffer[i]; i++)
     {
-        if (buffer[i] == '\n')
+        if (map->buffer[i] == '\n')
             break;
     }
     return (i + 1);
 }
 
-int find_rows(char const *buffer, int i)
+int find_rows(map_t *map)
 {
     int count = 0;
-    for (; buffer[i] != '\n'; i++) {
+    for (; map->buffer[map->rows] != '\n'; map->rows++) {
         count++;
     }
     return (count);
 }
 
-char *map_replaced(char *buffer, int i, int rows)
+int *map_replaced(int *buffer, int i, int rows)
 {
     int j = i;
     while (buffer[i] != '\n') {
-        if (buffer[i] == '.') {
-            buffer[i] = '1';
+        if (buffer[i] == 46) {
+            buffer[i] = 1;
         }
         i++;
     }
     while (buffer[i] != '\0') {
         if (buffer[i] == '\n') {
             i++;
-            if (buffer[i] == '.') {
-                buffer[i] = '1';
+            if (buffer[i] == 46) {
+                buffer[i] = 1;
             }
         }
         i++;
@@ -53,16 +50,16 @@ char *map_replaced(char *buffer, int i, int rows)
     return (buffer);
 }
 
-char *map_with_2(char *buffer, int i, int rows)
+int *map_with_2(int *buffer, int i, int rows)
 {
     int j;
     j = i + rows + 1;
     while (buffer[j] != '\0') {
-        if (buffer[j] == '.') {
-            if (buffer[j - 1] == '1' && buffer[j - (rows + 1)] == '1' && buffer[j - (rows + 2)] == '1') {
-                buffer[j] = '2';
+        if (buffer[j] == 46) {
+            if (buffer[j - 1] == 1 && buffer[j - (rows + 1)] == 1 && buffer[j - (rows + 2)] == 1) {
+                buffer[j] = 2;
             } else {
-                buffer[j] = '1';
+                buffer[j] = 1;
             }  
         }
         j++; 
@@ -70,25 +67,32 @@ char *map_with_2(char *buffer, int i, int rows)
     return (buffer);
 }
 
-char *bsq(char const *filepath)
+void my_bsq(char *filepath)
 {
-    int size = 20001;
-    int rows = 0;
-    int skip = 0;
-    char *buffer[size];
-    int **map;
+    map_t *map = malloc(sizeof(*map));
+    struct stat off_t;
+    int size2 = 0;
+    int test =0;
     int fd = open(filepath, O_RDONLY);
+    size2 = stat(filepath, &off_t);
     if (fd == -1) {
-        return 84;
+        printf("ok");
+        exit (84);
     }
-    read(fd, buffer, size);
-    skip = skip_first_line(buffer);
-    rows = find_rows(buffer, skip);
-    return map_with_2((map_replaced(buffer, skip, rows)), skip, rows);
+    map->buffer = malloc(sizeof(char) * (off_t.st_size + 1));
+    read(fd, map->buffer, off_t.st_size);
+    map->rows = skip_first_line(map);
+    my_putstr(map->buffer);
+    free(map->buffer);
+    free(map);
 }
 
-int main(int ac, int **ag)
+int main(int ac, char **av)
 {
-    my_putstr(bsq(ag[1]));
+    if (ac != 2) {
+        return (84);
+    } else {
+        my_bsq(av[1]);
+    }
     return (0);
 }
