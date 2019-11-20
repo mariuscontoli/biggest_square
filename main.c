@@ -186,10 +186,8 @@ void my_bsq(char *filepath)
     map->biggest = find_biggest(map);
     map->buffer = map_with_square(map);
     map->new_map = final_map(map);
-    //printf("%d\n", map->file_size);
     map->skip = skip_first_line(map);
     write(1, map->new_map, off_t.st_size - map->skip);
-    //print_buffer(map);
     free(map->sv_map);
     free(map);
 }
