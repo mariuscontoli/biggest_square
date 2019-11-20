@@ -9,15 +9,26 @@
 #include <sys/types.h>
 
 typedef struct map {
-    char *buffer;
+    char *sv_map;
+    int *buffer;
     int rows;
-    int columns;
-    int size;
+    int biggest;
+    int skip;
+    int index_buf;
+    int top;
+    int top_left;
+    int left;
 } map_t;
 
 int main(int ac, char **av);
 void my_bsq(char *filepath);
+int skip_first_line(map_t *map);
+int find_rows(map_t *map);
+int *map_replaced(map_t *map);
+int find_smallest(map_t *map);
 int my_putstr(char const *str);
 void my_putchar(char c);
+int my_put_nbr(int nb);
+int print_buffer(map_t *map);
 
 #endif
