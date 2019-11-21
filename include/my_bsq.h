@@ -20,6 +20,8 @@ typedef struct map {
     char *new_map;
     int *buffer;
     int rows;
+    int number_given;
+    int br;
     int biggest;
     int skip;
     int index_buf;
@@ -31,16 +33,21 @@ typedef struct map {
 
 int main(int ac, char **av);
 void my_bsq(char *filepath);
+void errors(map_t *map);
+void first_line_error(map_t *map);
+void char_errors(map_t *map);
+void at_least_line(map_t *map);
+void processing(map_t *map);
+void number_of_lines_error(map_t *map);
 int skip_first_line(map_t *map);
 int find_rows(map_t *map);
-void processing(map_t *map);
 int *map_replaced(map_t *map);
 int *map_with_2(map_t *map);
 int *map_with_square(map_t *map);
 char *final_map(map_t *map);
 int find_smallest(map_t *map);
 int find_biggest(map_t *map);
-int my_putstr(char const *str);
+int my_atoi(char const *str);
 void my_putchar(char c);
 int my_put_nbr(int nb);
 
