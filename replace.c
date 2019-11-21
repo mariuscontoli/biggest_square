@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_bsq replace.c
+** replace.c
 ** File description:
 ** replace functions for bsq project
 */
