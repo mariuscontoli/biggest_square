@@ -7,7 +7,7 @@
 
 #include "include/my_bsq.h"
 
-int replace2(map_t *map)
+void replace2(map_t *map)
 {
     if (map->sv_map[map->skip] == '.') {
         map->buffer[map->index_buf] = 1;
@@ -18,7 +18,7 @@ int replace2(map_t *map)
         map->skip++;
         map->index_buf++;
     } else {
-        return (84);
+        exit (84);
     }
 }
 
@@ -33,6 +33,8 @@ int *map_replaced(map_t *map)
             replace2(map);
         }
     }
+    if (map->sv_map[map->skip - 1] != '\n')
+        exit (84);
     map->buffer[map->index_buf] = -2;
     map->index_buf = 0;
     return (map->buffer);
