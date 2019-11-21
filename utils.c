@@ -12,21 +12,17 @@ void my_putchar(char c)
     write(1, &c, 1);
 }
 
-int my_put_nbr(int nb)
+int my_atoi(char const *str)
 {
-    int modulo;
-    if (nb < 0) {
-        my_putchar('-');
-        nb = nb * (-1);
-    }
-    if (nb >= 0) {
-        if (nb >= 10) {
-            modulo = (nb % 10);
-            nb = (nb - modulo) / 10;
-            my_put_nbr(nb);
-            my_putchar(48 + modulo);
+    int i = 0;
+    int tmp = 0;
+    while (str[i] != '\0') {
+        if (str[i] < 48 || str[i] > 57) {
+            exit (84);
         }
-        else
-            my_putchar(48 + nb % 10);
+        tmp = tmp * 10;
+        tmp = tmp + str[i] - 48;
+        i++;
     }
+    return (tmp);
 }
