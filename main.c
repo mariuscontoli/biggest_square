@@ -5,7 +5,7 @@
 ** fs_open_file
 */
 
-#include "my_bsq.h"
+#include "include/my_bsq.h"
 
 int skip_first_line(map_t *map)
 {
@@ -172,7 +172,7 @@ void my_bsq(char *filepath)
     int fd = open(filepath, O_RDONLY);
     stat(filepath, &off_t);
     map->file_size = off_t.st_size;
-    if (fd == -1) {
+    if (fd == -1 || map->file_size < 0) {
         exit (84);
     }
     map->sv_map = malloc(sizeof(char) * (off_t.st_size + 1));
