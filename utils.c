@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2019
+** my_bsq utils
+** File description:
+** utilitary functions for bsq project
+*/
+
 #include "include/my_bsq.h"
 
 void my_putchar(char c)
