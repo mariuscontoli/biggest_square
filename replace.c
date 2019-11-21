@@ -13,10 +13,12 @@ void replace2(map_t *map)
         map->buffer[map->index_buf] = 1;
         map->skip++;
         map->index_buf++;
+        map->line_chars += 1;
     } else if (map->sv_map[map->skip] == 'o') {
         map->buffer[map->index_buf] = 0;
         map->skip++;
         map->index_buf++;
+        map->line_chars += 1;
     } else {
         exit (84);
     }
@@ -30,6 +32,10 @@ int *map_replaced(map_t *map)
             map->skip++;
             map->index_buf++;
             map->br += 1;
+            if (map->line_chars != map->rows) {
+                exit (84);
+            }
+            map->line_chars = 0;
         } else {
             replace2(map);
         }
