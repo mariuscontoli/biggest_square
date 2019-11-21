@@ -7,6 +7,21 @@
 
 #include "include/my_bsq.h"
 
+int replace2(map_t *map)
+{
+    if (map->sv_map[map->skip] == '.') {
+        map->buffer[map->index_buf] = 1;
+        map->skip++;
+        map->index_buf++;
+    } else if (map->sv_map[map->skip] == 'o') {
+        map->buffer[map->index_buf] = 0;
+        map->skip++;
+        map->index_buf++;
+    } else {
+        return (84);
+    }
+}
+
 int *map_replaced(map_t *map)
 {
     while (map->sv_map[map->skip] != '\0') {
@@ -14,16 +29,8 @@ int *map_replaced(map_t *map)
             map->buffer[map->index_buf] = -1;
             map->skip++;
             map->index_buf++;
-        }
-        if (map->sv_map[map->skip] == '.') {
-            map->buffer[map->index_buf] = 1;
-            map->skip++;
-            map->index_buf++;
-        }
-        if (map->sv_map[map->skip] == 'o') {
-            map->buffer[map->index_buf] = 0;
-            map->skip++;
-            map->index_buf++;
+        } else {
+            replace2(map);
         }
     }
     map->buffer[map->index_buf] = -2;
@@ -48,55 +55,4 @@ int *map_with_2(map_t *map)
         map->index_buf++;
     }
     return (map->buffer);
-}
-
-int *map_with_square(map_t *map)
-{
-    int i = 0;
-    int xtime = map->biggest;
-    int xtime2 = map->biggest;
-    while (map->buffer[i] != map->biggest) {
-        i++;
-    }
-    while (xtime != 0) {
-        map->buffer[i] = -3;
-        while (xtime2 != 0) {
-            map->buffer[i - ((map->rows + 1) * (xtime2 - 1))] = -3;
-            xtime2--;
-        }
-        xtime2 = map->biggest;
-        xtime--;
-        i--;
-    }
-    return (map->buffer);
-}
-
-char *final_map(map_t *map)
-{
-    int i = 0;
-    int *j = &i;
-    while (map->buffer[i] != -2) {
-        if (map->buffer[i] == 0) {
-            map->new_map[i] = 'o';
-            i += 1;
-        } else {
-            final2(map, j);
-        }
-    }
-    map->new_map[i] = '\0';
-    return (map->new_map);
-}
-
-void final2(map_t *map, int *i)
-{
-    if (map->buffer[*i] > 0) {
-        map->new_map[*i] = '.';
-        *i += 1;
-    } else if (map->buffer[*i] == -1) {
-        map->new_map[*i] = '\n';
-        *i += 1;
-    } else if (map->buffer[*i] == -3) {
-        map->new_map[*i] = 'x';
-        *i += 1;
-    }
 }
