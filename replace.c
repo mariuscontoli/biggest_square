@@ -74,21 +74,29 @@ int *map_with_square(map_t *map)
 char *final_map(map_t *map)
 {
     int i = 0;
+    int *j = &i;
     while (map->buffer[i] != -2) {
         if (map->buffer[i] == 0) {
             map->new_map[i] = 'o';
-            i++;
-        } else if (map->buffer[i] > 0) {
-            map->new_map[i] = '.';
-            i++;
-        } else if (map->buffer[i] == -1) {
-            map->new_map[i] = '\n';
-            i++;
-        } else if (map->buffer[i] == -3) {
-            map->new_map[i] = 'x';
-            i++;
-        }
+            i += 1;
+        } else {
+            final2(map, j);
+       }
     }
     map->new_map[i] = '\0';
     return (map->new_map);
+}
+
+void final2(map_t *map, int *i)
+{
+    if (map->buffer[*i] > 0) {
+        map->new_map[*i] = '.';
+        *i += 1;
+    } else if (map->buffer[*i] == -1) {
+        map->new_map[*i] = '\n';
+        *i += 1;
+    } else if (map->buffer[*i] == -3) {
+        map->new_map[*i] = 'x';
+        *i += 1;
+    }
 }
