@@ -40,12 +40,12 @@ int *map_with_2(map_t *map)
     while (map->buffer[map->index_buf] != -2) {
         if (map->buffer[map->index_buf] == 1) {
             if (map->buffer[map->index_buf - map->left] > 0 &&
-            map->buffer[map->index_buf - map->top] > 0 && 
+            map->buffer[map->index_buf - map->top] > 0 &&
             map->buffer[map->index_buf - map->top_left] > 0) {
                 map->buffer[map->index_buf] = (find_smallest(map) + 1);
-            }  
+            }
         }
-        map->index_buf++; 
+        map->index_buf++;
     }
     return (map->buffer);
 }
