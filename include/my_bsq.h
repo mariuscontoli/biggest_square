@@ -33,6 +33,7 @@ int main(int ac, char **av);
 void my_bsq(char *filepath);
 int skip_first_line(map_t *map);
 int find_rows(map_t *map);
+void processing(map_t *map);
 int *map_replaced(map_t *map);
 int *map_with_2(map_t *map);
 int *map_with_square(map_t *map);
