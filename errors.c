@@ -53,6 +53,9 @@ void char_errors(map_t *map)
         }
         i++;
     }
+    if (map->sv_map[i - 1] != '\n') {
+        exit (84);
+    }
 }
 
 void at_least_line(map_t *map)
