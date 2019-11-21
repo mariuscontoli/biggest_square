@@ -38,6 +38,7 @@ void first_line_error(map_t *map);
 void char_errors(map_t *map);
 void at_least_line(map_t *map);
 void processing(map_t *map);
+void final2(map_t *map, int *i);
 void number_of_lines_error(map_t *map);
 int skip_first_line(map_t *map);
 int find_rows(map_t *map);
