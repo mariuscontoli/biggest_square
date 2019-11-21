@@ -28,6 +28,18 @@ int find_rows(map_t *map)
     return (count);
 }
 
+void processing(map_t *map)
+{
+    map->skip = skip_first_line(map);
+    map->rows = find_rows(map);
+    map->buffer = map_replaced(map);
+    map->buffer = map_with_2(map);
+    map->biggest = find_biggest(map);
+    map->buffer = map_with_square(map);
+    map->new_map = final_map(map);
+    map->skip = skip_first_line(map);
+}
+
 void my_bsq(char *filepath)
 {
     map_t *map = malloc(sizeof(*map));
@@ -43,14 +55,7 @@ void my_bsq(char *filepath)
     map->buffer = malloc(sizeof(int) * (off_t.st_size + 1));
     map->new_map = malloc(sizeof(char) * (off_t.st_size + 1));
     read(fd, map->sv_map, off_t.st_size);
-    map->skip = skip_first_line(map);
-    map->rows = find_rows(map);
-    map->buffer = map_replaced(map);
-    map->buffer = map_with_2(map);
-    map->biggest = find_biggest(map);
-    map->buffer = map_with_square(map);
-    map->new_map = final_map(map);
-    map->skip = skip_first_line(map);
+    processing(map);
     write(1, map->new_map, off_t.st_size - map->skip);
     free(map->sv_map);
     free(map);
