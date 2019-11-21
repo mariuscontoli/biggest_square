@@ -32,9 +32,8 @@ int *map_replaced(map_t *map)
             map->skip++;
             map->index_buf++;
             map->br += 1;
-            if (map->line_chars != map->rows) {
+            if (map->line_chars != map->rows)
                 exit (84);
-            }
             map->line_chars = 0;
         } else {
             replace2(map);
