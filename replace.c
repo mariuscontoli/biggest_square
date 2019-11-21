@@ -29,6 +29,7 @@ int *map_replaced(map_t *map)
             map->buffer[map->index_buf] = -1;
             map->skip++;
             map->index_buf++;
+            map->br += 1;
         } else {
             replace2(map);
         }
@@ -36,6 +37,9 @@ int *map_replaced(map_t *map)
     if (map->sv_map[map->skip - 1] != '\n')
         exit (84);
     map->buffer[map->index_buf] = -2;
+    if (map->br < 1 || map->br != map->number_given)
+        exit (84);
+    errors(map);
     map->index_buf = 0;
     return (map->buffer);
 }
