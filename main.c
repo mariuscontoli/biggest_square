@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT , 2019
-** fs_open_file
+** main.c
 ** File description :
-** fs_open_file
+** main file for bsq project
 */
 
 #include "include/my_bsq.h"
