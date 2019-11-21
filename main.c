@@ -55,6 +55,7 @@ void my_bsq(char *filepath)
     map->buffer = malloc(sizeof(int) * (off_t.st_size + 1));
     map->new_map = malloc(sizeof(char) * (off_t.st_size + 1));
     read(fd, map->sv_map, off_t.st_size);
+    errors(map);
     processing(map);
     write(1, map->new_map, off_t.st_size - map->skip);
     free(map->sv_map);
