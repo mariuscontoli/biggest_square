@@ -38,9 +38,9 @@ int *map_with_2(map_t *map);
 int *map_with_square(map_t *map);
 char *final_map(map_t *map);
 int find_smallest(map_t *map);
+int find_biggest(map_t *map);
 int my_putstr(char const *str);
 void my_putchar(char c);
 int my_put_nbr(int nb);
-int print_buffer(map_t *map);
 
 #endif
