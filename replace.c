@@ -81,7 +81,7 @@ char *final_map(map_t *map)
             i += 1;
         } else {
             final2(map, j);
-       }
+        }
     }
     map->new_map[i] = '\0';
     return (map->new_map);
