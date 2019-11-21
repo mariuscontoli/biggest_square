@@ -52,32 +52,6 @@ int *map_replaced(map_t *map)
     return (map->buffer);
 }
 
-int find_smallest(map_t *map)
-{
-    int a = map->buffer[map->index_buf - map->left];
-    int b = map->buffer[map->index_buf - map->top];
-    int c = map->buffer[map->index_buf - map->top_left];
-    if (a <= b && a <= c) 
-        return (a);
-    else if (b <= a && b <= c)
-        return (b);
-    else 
-        return (c);
-}
-
-int find_biggest(map_t *map)
-{
-    int i = 0;
-    int highest = 0;
-    while (map->buffer[i] != -2) {
-        if (map->buffer[i] > highest) {
-            highest = map->buffer[i];
-        }
-        i++;
-    }
-    return (highest);
-}
-
 int *map_with_2(map_t *map)
 {
     map->left = 1;
@@ -138,21 +112,6 @@ char *final_map(map_t *map)
     }
     map->new_map[i] = '\0';
     return (map->new_map);
-}
-
-int print_buffer(map_t *map)
-{
-    int i = 0;
-    while (map->buffer[i] >= -1 || map->buffer[i] == -3) {
-        if (map->buffer[i] == -1 && map->buffer[i + 1] != -2) {
-            my_put_nbr(map->buffer[i]);
-            my_putchar('\n');
-            i += 1;
-        }
-        my_put_nbr(map->buffer[i]);
-        i += 1;
-    }
-    return (0);
 }
 
 void my_bsq(char *filepath)
