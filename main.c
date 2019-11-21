@@ -118,15 +118,6 @@ int *map_with_square(map_t *map)
     return (map->buffer);
 }
 
-char replace(map_t *map, int i)
-{
-    if (map->buffer[i] > 0)
-        return ('.');
-    if (map->buffer[i] = 0)
-        return ('o');
-    if (map->buffer[i] = -1)
-        return ('\n');
-}
 char *final_map(map_t *map)
 {
     int i = 0;
