@@ -22,8 +22,12 @@ int find_rows(map_t *map)
 {
     int count = 0;
     int i = map->skip;
-    for (; map->sv_map[i] != '\n'; i++) {
+    while (map->sv_map[i] != '\n' && map->sv_map[i] != '\0') {
         count++;
+        i++;
+    }
+    if (map->sv_map[i] == '\0') {
+        exit (84);
     }
     return (count);
 }
