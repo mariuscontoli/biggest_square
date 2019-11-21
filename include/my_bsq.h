@@ -20,6 +20,7 @@ typedef struct map {
     char *new_map;
     int *buffer;
     int rows;
+    int line_chars;
     int number_given;
     int br;
     int biggest;
