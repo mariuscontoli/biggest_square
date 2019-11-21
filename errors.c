@@ -22,8 +22,8 @@ void number_of_lines_error(map_t *map)
     if (map->number_given != (map->br -1)) {
         exit (84);
     }
-
 }
+
 void first_line_error(map_t *map)
 {
     int i = 0;
