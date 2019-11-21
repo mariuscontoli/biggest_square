@@ -49,6 +49,5 @@ int find_smallest(map_t *map);
 int find_biggest(map_t *map);
 int my_atoi(char const *str);
 void my_putchar(char c);
-int my_put_nbr(int nb);
 
 #endif
