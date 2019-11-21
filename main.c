@@ -48,7 +48,7 @@ void my_bsq(char *filepath)
     int fd = open(filepath, O_RDONLY);
     stat(filepath, &off_t);
     map->file_size = off_t.st_size;
-    if (fd == -1 || map->file_size < 0) {
+    if (fd < 0 || map->file_size < 0) {
         exit (84);
     }
     map->sv_map = malloc(sizeof(char) * (off_t.st_size + 1));
