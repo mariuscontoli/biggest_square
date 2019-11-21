@@ -58,6 +58,8 @@ void my_bsq(char *filepath)
     processing(map);
     write(1, map->new_map, off_t.st_size - map->skip);
     free(map->sv_map);
+    free(map->buffer);
+    free(map->new_map);
     free(map);
 }
 
