@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT , 2019
+** EPITECH PROJECT, 2019
 ** main.c
 ** File description :
 ** main file for bsq project
