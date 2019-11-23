@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_bsq find.c
+** find.c
 ** File description:
 ** find functions for bsq project
 */
