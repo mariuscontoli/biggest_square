@@ -1,6 +1,6 @@
 ##
 ## EPITECH PROJECT, 2019
-## Makefile my_printf
+## Makefile my_bsq
 ## File description:
 ## Will compile our project
 ##
