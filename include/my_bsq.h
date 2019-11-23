@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_bsq header
+** my_bsq.h
 ** File description:
 ** header for bsq project
 */
