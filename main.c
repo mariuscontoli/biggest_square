@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
 ** main.c
-** File description :
-** main file for bsq project
+** File description:
+** main file for bsq
 */
 
 #include "include/my_bsq.h"
