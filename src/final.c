@@ -5,7 +5,7 @@
 ** final functions for bsq project
 */
 
-#include "include/my_bsq.h"
+#include "../include/my_bsq.h"
 
 int *map_with_square(map_t *map)
 {

@@ -5,7 +5,7 @@
 ** replace functions for bsq project
 */
 
-#include "include/my_bsq.h"
+#include "../include/my_bsq.h"
 
 void replace2(map_t *map)
 {

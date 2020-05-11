@@ -5,26 +5,26 @@
 ## Will compile our project
 ##
 
-CC	=	gcc
-
 NAME 	=	bsq
 
-SRC	=	$(wildcard *.c)
+CC	=	gcc
+
+SRC	=	$(wildcard src/*.c)
 
 OBJ	=	$(SRC:.c=.o)
 
 all:	$(NAME)
 
-%.o: %.c
-	$(CC) -o $@ -c $<
-
 $(NAME): $(OBJ)
-	$(CC) -o $@ $^
+	$(CC) -g -g3 -o $(NAME) $(OBJ)
+
+re:
+	make fclean
+	make all
 
 clean:
-	rm -rf *.o
+	find -name '*.o' -exec rm {} \;
 
-fclean:	clean
+fclean:
+	make clean
 	rm -f $(NAME)
-
-re: fclean all

@@ -5,7 +5,7 @@
 ** find functions for bsq project
 */
 
-#include "include/my_bsq.h"
+#include "../include/my_bsq.h"
 
 int find_smallest(map_t *map)
 {

@@ -5,7 +5,7 @@
 ** error handling file
 */
 
-#include "include/my_bsq.h"
+#include "../include/my_bsq.h"
 
 void errors(map_t *map)
 {

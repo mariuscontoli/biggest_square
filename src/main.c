@@ -5,7 +5,7 @@
 ** main file for bsq
 */
 
-#include "include/my_bsq.h"
+#include "../include/my_bsq.h"
 
 int skip_first_line(map_t *map)
 {

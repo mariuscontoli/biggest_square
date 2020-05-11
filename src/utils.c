@@ -5,7 +5,7 @@
 ** utilitary functions for bsq project
 */
 
-#include "include/my_bsq.h"
+#include "../include/my_bsq.h"
 
 void my_putchar(char c)
 {
